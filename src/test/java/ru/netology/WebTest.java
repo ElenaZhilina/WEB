@@ -15,7 +15,6 @@ class WebTest {
 
     @BeforeAll
     static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\YZhilina\\Documents\\Documents\\Lena\\OWN\\Netology\\Chromedriver\\chromedriver-win64\\chromedriver.exe");
         WebDriverManager.chromedriver().setup();
     }
 
@@ -45,10 +44,10 @@ class WebTest {
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+77772100609");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
-        String text = driver.findElement(By.className("paragraph")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
 
-        Thread.sleep(10000);
+        Thread.sleep(5000);
     }
 }
 
